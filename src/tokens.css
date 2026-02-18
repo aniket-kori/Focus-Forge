@@ -1,0 +1,131 @@
+/* ============================================================
+   tokens.css  —  Design system tokens
+   ============================================================ */
+
+:root {
+  /* Background layers */
+  --bg:          #0d1117;
+  --surface:     #13192a;
+  --card:        #1a2035;
+  --card-hover:  #1f2740;
+  --border:      #242d42;
+  --border-light:#2e3a52;
+
+  /* Text */
+  --text:        #d4dce8;
+  --text-muted:  #68778f;
+  --text-dim:    #3d4d63;
+
+  /* Accent */
+  --accent:      #5b8dee;
+  --accent-dim:  #142050;
+  --accent-glow: rgba(91,141,238,0.18);
+
+  /* Study (teal-green) */
+  --study:       #4a9b82;
+  --study-dim:   #10332a;
+  --study-glow:  rgba(74,155,130,0.2);
+
+  /* Break (warm amber) */
+  --brk:         #c09040;
+  --brk-dim:     #33260a;
+  --brk-glow:    rgba(192,144,64,0.2);
+
+  /* Feedback */
+  --success:     #4a9b6a;
+  --danger:      #c05548;
+  --warning:     #c09040;
+
+  /* Typography */
+  --font-body:   'Sora', sans-serif;
+  --font-mono:   'Space Mono', monospace;
+
+  /* Shadows */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.35);
+  --shadow-md:   0 4px 20px rgba(0,0,0,0.45);
+  --shadow-lg:   0 8px 40px rgba(0,0,0,0.55);
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+}
+
+/* ── Global resets ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { cursor: pointer; font-family: inherit; }
+input, textarea, select { font-family: inherit; outline: none; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px var(--study-glow); }
+  50%       { box-shadow: 0 0 24px var(--study-glow); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Utility classes ── */
+.fade-in       { animation: fadeIn 0.3s ease forwards; }
+.slide-right   { animation: slideInRight 0.3s ease forwards; }
+.pulse         { animation: pulse 1.8s ease infinite; }
+.glow-study    { animation: glow 2.5s ease infinite; }
+.scale-in      { animation: scaleIn 0.25s ease forwards; }
+
+.flex          { display: flex; }
+.flex-col      { display: flex; flex-direction: column; }
+.items-center  { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-4         { gap: 4px; }
+.gap-8         { gap: 8px; }
+.gap-12        { gap: 12px; }
+.gap-16        { gap: 16px; }
+.gap-20        { gap: 20px; }
+.flex-1        { flex: 1; }
+
+.text-muted    { color: var(--text-muted); }
+.text-accent   { color: var(--accent); }
+.text-study    { color: var(--study); }
+.text-danger   { color: var(--danger); }
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

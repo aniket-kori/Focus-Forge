@@ -1,0 +1,358 @@
+.timer-page {
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ── Top Bar with IST Clock ── */
+.timer-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.digital-clock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.clock-time {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 3px;
+  line-height: 1;
+}
+.clock-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.top-bar-center {
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+}
+.timer-schedule-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.timer-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.sound-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 8px 14px;
+  font-size: 18px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.sound-btn.off { opacity: 0.4; }
+.sound-btn:hover { background: var(--card-hover); }
+
+/* ── Main Grid: Pomodoro Left | Controls+Schedule Right ── */
+.timer-main-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* LEFT: Pomodoro Section */
+.timer-pomodoro-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+.pomodoro-card {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* RIGHT: Two rows - Controls + Schedule */
+.timer-right-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+  padding: 20px;
+  gap: 16px;
+}
+
+.controls-card {
+  flex-shrink: 0;
+}
+
+.schedule-card {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Controls */
+.controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.controls-grid .sc-btn:first-child {
+  grid-column: 1 / -1;
+}
+
+.stats-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.stat-chip {
+  flex: 1;
+  min-width: 90px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+.chip-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.chip-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+/* Adjust row */
+.adjust-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.adj-btn {
+  background: transparent;
+  border-radius: var(--r-sm);
+  padding: 5px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  transition: all 0.2s;
+}
+.adj-btn.adj-minus {
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+.adj-btn.adj-minus:hover { background: rgba(192,85,72,0.1); }
+.adj-btn.adj-plus {
+  border: 1px solid var(--study);
+  color: var(--study);
+}
+.adj-btn.adj-plus:hover { background: var(--study-dim); }
+
+/* Block info */
+.block-info {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.block-subject {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border-radius: 20px;
+  padding: 3px 10px;
+  width: fit-content;
+}
+.block-notes {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Schedule Compact List */
+.schedule-compact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.schedule-compact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 10px;
+}
+.schedule-compact-item:hover:not(.done) {
+  background: var(--surface);
+}
+.schedule-compact-item.active {
+  background: var(--accent-dim);
+  border-color: rgba(91,141,238,0.25);
+}
+.schedule-compact-item.done {
+  opacity: 0.35;
+}
+
+.sched-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sched-bar {
+  width: 3px;
+  height: 28px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.sched-bar.study { background: var(--study); }
+.sched-bar.break { background: var(--brk); }
+
+.sched-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  min-width: 40px;
+}
+
+.sched-name-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sched-name {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.schedule-compact-item.active .sched-name {
+  color: var(--accent);
+  font-weight: 700;
+}
+.schedule-compact-item.done .sched-name {
+  text-decoration: line-through;
+}
+
+.sched-subject-mini {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.sched-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sched-dur {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 32px;
+  text-align: right;
+}
+
+.sched-done {
+  font-size: 12px;
+  color: var(--success);
+}
+
+.sched-live {
+  font-size: 10px;
+  color: var(--accent);
+}
+
+/* No schedule */
+.no-schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  gap: 12px;
+  text-align: center;
+  padding: 40px;
+}
+.no-schedule h3 { font-size: 22px; color: var(--text); }
+.no-schedule p  { font-size: 14px; color: var(--text-muted); }
+
+@media (max-width: 1000px) {
+  .timer-main-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .timer-pomodoro-section {
+    padding: 20px;
+  }
+  .timer-right-panel {
+    padding: 0 20px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .timer-top-bar {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+  .digital-clock .clock-time { font-size: 22px; }
+  .top-bar-center { flex-basis: 100%; order: 3; }
+  .timer-schedule-name { font-size: 16px; }
+  .controls-grid { grid-template-columns: 1fr; }
+}
