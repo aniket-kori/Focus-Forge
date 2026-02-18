@@ -11,7 +11,7 @@ const AUDIO_MAP = {
   breakEnd:      { file: '/audio/break_end.mp3',      text: 'Break is over. Back to studying!' },
   warning5min:   { file: '/audio/warning_5min.mp3',   text: '5 minutes remaining in this session.' },
   warning2min:   { file: '/audio/warning_2min.mp3',   text: '2 minutes remaining.' },
-  nextSession:   { file: '/audio/next_session.mp3',   text: null }, // dynamic text passed in
+  nextSession:   { file: '/audio/next_session.mp3',   text: 'next session begins' },
   skipSession:   { file: '/audio/skip_session.mp3',   text: 'Skipping to the next session.' },
 };
 
